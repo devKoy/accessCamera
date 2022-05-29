@@ -1,0 +1,30 @@
+html{
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #00203FFF;
+	overflow: hidden;
+}
+
+div.controls {
+	display: flex;
+	position: absolute;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	width: 100%;
+}
+
+#my_camera{
+	position: relative;
+	z-index: -1;
+}
+
+
+input#capture {
+	position: absolute;
+	bottom: 1rem;
+	transform: translate(-50%, -50%);
+}

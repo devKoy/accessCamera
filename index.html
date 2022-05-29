@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Test_Disease_API</title>
+	<link rel="stylesheet" href="src/style/loader.css"></link>
+</head>
+<body>
+	<!-- CAMERA HOLDER	-->
+	<div class="holder">
+		<div id="my_camera"></div>
+		<!-- CAPTURE IMAGE -->
+		<div class="controls">
+			<input id="capture" type=button value="Take Snapshot" onClick="take_snapshot()">
+		</div>
+		<div id="results" ></div>
+	</div>
+	</body>
+</html>
+
+
+<!-- load Axios -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
+<!-- load Jquery -->
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="src/script/webcam.min.js"></script>
+<script src="src/script/api_client.js"></script>
