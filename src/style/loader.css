@@ -1,39 +1,20 @@
-html{
-	margin: 0;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: black;
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
 	overflow: hidden;
+	background-color: black;
 }
-#video {
+#video, #canvas {
 	position: absolute;
 	top: 0;
 	left: 0;
-	width:100vh;
-	height:100vw;
+	width:100%;
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	object-fit: fill;
 }
   
-
-#canvas {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width:100vh;
-	height:100vw;
-}
-  
-.camera {
-	width: 340px;
-	display:inline-block;
-}
-  
-.contentarea {
-	font-family: "Lucida Grande", "Arial", sans-serif;
-	width: 100vw;
-	height: 100vh;
-}
 
 .footer-controls {
 	position: absolute;
@@ -41,7 +22,7 @@ html{
 	left: 0;
 	width: 100vw;
 	height: 20vh;
-	background-color: white;
+	background-color: rgba(0, 0, 0, 0.3);
 	display: flex;
 	justify-content: center;
 	align-items: center;
