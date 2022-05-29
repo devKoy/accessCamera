@@ -4,54 +4,59 @@ html{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: #00203FFF;
+	background: black;
 	overflow: hidden;
 }
 #video {
-	border: 1px solid black;
-	box-shadow: 2px 2px 3px black;
-	width:320px;
-	height:240px;
-  }
+	position: absolute;
+	top: 0;
+	left: 0;
+	width:100vh;
+	height:100vw;
+}
   
-  #photo {
-	border: 1px solid black;
-	box-shadow: 2px 2px 3px black;
-	width:320px;
-	height:240px;
-  }
+
+#canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width:100vh;
+	height:100vw;
+}
   
-  #canvas {
-	display:none;
-  }
-  
-  .camera {
+.camera {
 	width: 340px;
 	display:inline-block;
-  }
+}
   
-  .output {
-	width: 340px;
-	display:inline-block;
-	vertical-align: top;
-  }
-  
-  #startbutton {
-	display:block;
-	position:relative;
-	margin-left:auto;
-	margin-right:auto;
-	bottom:32px;
-	background-color: rgba(0, 150, 0, 0.5);
-	border: 1px solid rgba(255, 255, 255, 0.7);
-	box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
-	font-size: 14px;
+.contentarea {
 	font-family: "Lucida Grande", "Arial", sans-serif;
-	color: rgba(255, 255, 255, 1.0);
-  }
-  
-  .contentarea {
-	font-size: 16px;
-	font-family: "Lucida Grande", "Arial", sans-serif;
-	width: 760px;
-  }
+	width: 100vw;
+	height: 100vh;
+}
+
+.footer-controls {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100vw;
+	height: 20vh;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 15px 15px 0 0 ;
+}
+
+#startbutton {
+	padding: 17px;
+	background-color: #00203FFF;
+	border-radius: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #ADEFD1FF;
+	font-size: 2em;
+	font-weight: bold;
+	border: none;
+}

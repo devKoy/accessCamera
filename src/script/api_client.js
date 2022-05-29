@@ -4,6 +4,7 @@
 function uploadFile() {
 	var formData = new FormData(); 
 	var fileInput = document.getElementById('fileInput'); 
+	console.log(fileInput.files[0]);
 	if (fileInput.files[0]){
 		formData.append("classified_id", 2);
 		formData.append("file", fileInput.files[0]); 					
@@ -25,6 +26,16 @@ function uploadFile() {
 	} 
 }
 
+// Capture Image
+function take_snapshot() {
+ 
+	// take snapshot and get image data
+	Webcam.snap( function(data_uri) {
+		// display results in page
+		document.getElementById('results').innerHTML = 
+		 '<img src="'+data_uri+'"/>';
+	 } );
+ }
 
 //  - --------------------CAMERA---------------------
 
@@ -69,10 +80,11 @@ function uploadFile() {
 	  video = document.getElementById('video');
 	  canvas = document.getElementById('canvas');
 	  photo = document.getElementById('photo');
+	  clearButton = document.getElementById('clear');
 	  startbutton = document.getElementById('startbutton');
   
 	  navigator.mediaDevices.getUserMedia({video: {
-		 facingMode: "environment"
+		  facingMode: "environment"
 	  }, audio: false})
 	  .then(function(stream) {
 		video.srcObject = stream;
@@ -105,20 +117,18 @@ function uploadFile() {
 		takepicture();
 		ev.preventDefault();
 	  }, false);
-  
-	  clearphoto();
+	  clearButton.addEventListener('click', function(ev){
+		clearphoto();
+		ev.preventDefault();
+	  }, false);
+	 
 	}
   
 	// Fill the photo with an indication that none has been
 	// captured.
   
 	function clearphoto() {
-	  var context = canvas.getContext('2d');
-	  context.fillStyle = "#AAA";
-	  context.fillRect(0, 0, canvas.width, canvas.height);
-  
-	  var data = canvas.toDataURL('image/png');
-	  photo.setAttribute('src', data);
+	  canvas.style.display = 'none';
 	}
   
 	// Capture a photo by fetching the current contents of the video
@@ -133,14 +143,42 @@ function uploadFile() {
 		canvas.width = width;
 		canvas.height = height;
 		context.drawImage(video, 0, 0, width, height);
-  
-		var data = canvas.toDataURL('image/png');
-		photo.setAttribute('src', data);
+		canvas.style.display = 'inline-block';
+		var data = canvas.toDataURL('image/jpeg', 1.0);
+
+		canvas.toBlob((blob) => {
+			let file = new File([blob], "fileName.jpg", { type: "image/jpeg" })
+			var formData = new FormData(); 
+			formData.append("classified_id", 2);
+			formData.append("file", file); 					
+			$("#previewImg").attr("src",file);
+			axios({
+				method: 'post',
+				url: 'https://bananaapi.herokuapp.com/predict', 
+				data: formData,
+				headers: { 
+				'Accept': 'application/json',
+				'Content-Type': 'multipart/form-data' },
+			}).then(function(response) {
+				$("#result").text(response.data);
+				console.log(response);
+			}) .catch(function(response) {
+				$("#result").text(response.data);
+				console.error(response);
+			});
+		}, 'image/jpeg');
+		
 	  } else {
 		clearphoto();
 	  }
 	}
-  
+	function dataURItoBlob(dataURI) {
+		var byteString = atob(dataURI.split(',')[1]);
+		var ab = new ArrayBuffer(byteString.length);
+		var ia = new Uint8Array(ab);
+		for (var i = 0; i < byteString.length; i++) { ia[i] = byteString.charCodeAt(i); }
+		return new Blob([ab], { type: 'image/jpeg' });
+	  }
 	// Set up our event listener to run the startup process
 	// once loading is complete.
 	window.addEventListener('load', startup, false);
