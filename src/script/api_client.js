@@ -25,16 +25,6 @@ function uploadFile() {
 	} 
 }
 
-// Capture Image
-function take_snapshot() {
- 
-	// take snapshot and get image data
-	Webcam.snap( function(data_uri) {
-		// display results in page
-		document.getElementById('results').innerHTML = 
-		 '<img src="'+data_uri+'"/>';
-	 } );
- }
 
 //  - --------------------CAMERA---------------------
 
@@ -81,7 +71,9 @@ function take_snapshot() {
 	  photo = document.getElementById('photo');
 	  startbutton = document.getElementById('startbutton');
   
-	  navigator.mediaDevices.getUserMedia({video: true, audio: false})
+	  navigator.mediaDevices.getUserMedia({video: {
+		 facingMode: "environment"
+	  }, audio: false})
 	  .then(function(stream) {
 		video.srcObject = stream;
 		video.play();
