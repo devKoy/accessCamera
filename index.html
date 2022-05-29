@@ -6,6 +6,13 @@
 		<link rel="stylesheet" href="src/style/loader.css"></link>
 	</head>
 	<body>
+		<div id="cont" class="container-res">
+			<div class="card-res">
+				<button id="clear" class="fa fa-remove"></button>
+				<canvas id="pred"></canvas>
+				<span>PREDICTION: <span id="pred-res"></span></span>
+			</div>
+		</div>
 		<div class="contentarea">
 			<div class="camera">
 			  <video id="video">Video stream not available.</video>
@@ -18,16 +25,41 @@
 			<div class="bounce3"></div>
 		</div>
 		<div class="footer-controls">
-			<button id="startbutton" class="fa fa-camera "></button>
-			<button id="clear" class="fa fa-remove"></button>
 			<input type="file" name="" id="fileInput" class="file-input" onchange="uploadFile()">
+			<label for="fileInput" class="file-label">
+				<img id="uploadImage" src="src/raw/upload.png" alt="" srcset="">
+			</label>
+			
+		
 		</div>
+		<div id="nav-bar">
+			<div class="home">
+				<span class="icon fa fa-home"></span>
+				<span class="text">Home</span>
+			</div>
+			<div class="discover">
+				<span class="icon fa fa-globe"></span>
+				<span class="text">Discover</span>
+			</div>
+			<div class="Scanner">
+				<button id="startbutton" class="fa fa-camera"></button>
+			</div>
+			<div class="Community">
+				<span class="icon fa fa-user-circle"></span>
+				<span class="text">Community</span>
+			</div>
+			<div class="Dictionary">
+				<span class="icon fa fa-leaf"></span>
+				<span class="text">Dictionary</span>
+			</div>
+		</div>
+		<img src="" alt="" id="previewImg" style="display: none;">
 	</body>
 	<!-- load Axios -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
 	<!-- load Jquery -->
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 	<script src="src/script/api_client.js"></script>
-
 </html>
+
 

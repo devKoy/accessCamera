@@ -3,6 +3,7 @@ html, body {
     padding: 0 !important;
 	overflow: hidden;
 	background-color: black;
+	
 }
 #video, #canvas {
 	position: absolute;
@@ -16,7 +17,7 @@ html, body {
 }
   
 
-.footer-controls {
+.footer-controlss {
 	position: absolute;
 	bottom: 0;
 	left: 0;
@@ -25,19 +26,100 @@ html, body {
 	background-color: rgba(0, 0, 0, 0.3);
 	display: flex;
 	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 	border-radius: 15px 15px 0 0 ;
+}
+.file-input {
+	display: none;
+}
+
+div#nav-bar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100vw;
+	height: 13vh;
+	background-color: #0d9c9b;
+	color: white;
+	display: flex;
+	font-family: helvetica;
+	font-variant: small-caps;
+	justify-content: center;
+	justify-content: space-around;
+	align-items: center;
+	border-radius: 10px 10px 0 0 ;
+}
+
+#uploadImage , #clear{
+	width: 45px;
+	height: 45px;
+	font-size: larger;
+	font-weight: 800;
+	background-color: transparent;
+	color: red;
+	border: none;
 }
 
 #startbutton {
 	padding: 17px;
-	background-color: #00203FFF;
-	border-radius: 20px;
+	background-color: white;
+	border-radius: 60px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: #ADEFD1FF;
-	font-size: 2em;
+	color: #0d9c9b;
 	font-weight: bold;
 	border: none;
+	font-size: larger;
+}
+
+#startbutton:hover {
+	box-shadow: 0 0 5px lime;
+	transform: scale(1.1);
+}
+
+div#nav-bar div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+div#nav-bar div span.icon {
+	font-size: 30px;
+	color: white;
+	margin-bottom: 5px;
+}
+div#nav-bar div span.text {
+	font-size: 12px;
+	color: white;
+	font-weight: 600;
+}
+
+div.container-res {
+	width: 100vh;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.4);
+	position: absolute;
+	left: 0;
+	height: 100%;
+	right: 0;
+	padding: 0;
+	z-index: 22;
+}
+
+div.card-res {
+	position: absolute;
+	left: 50%;
+	right: 50%;
+	width: 25vw;
+	padding: 1rem;
+	height: 50vh;
+	background-color: white;
+	border-radius: 15px;
+	display: flex;
+	margin: 0;
 }

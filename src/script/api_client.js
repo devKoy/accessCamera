@@ -2,13 +2,13 @@
 
 //Get Prediction from Model
 function uploadFile() {
+	
 	var formData = new FormData(); 
 	var fileInput = document.getElementById('fileInput'); 
 	console.log(fileInput.files[0]);
 	if (fileInput.files[0]){
 		formData.append("classified_id", 2);
 		formData.append("file", fileInput.files[0]); 					
-		$("#previewImg").attr("src", fileInput.files[0]);
 		axios({
 			method: 'post',
 			url: 'https://bananaapi.herokuapp.com/predict', 
@@ -100,6 +100,8 @@ function take_snapshot() {
 		ev.preventDefault();
 	  }, false);
 	  clearButton.addEventListener('click', function(ev){
+		let div = document.getElementById("cont");
+		div.style.display = 'flex';
 		clearphoto();
 		ev.preventDefault();
 	  }, false);
@@ -110,6 +112,7 @@ function take_snapshot() {
 	// captured.
   
 	function clearphoto() {
+		
 	  canvas.style.display = 'none';
 	}
   
@@ -127,13 +130,15 @@ function take_snapshot() {
 		context.drawImage(video, 0, 0, width, height);
 		canvas.style.display = 'inline-block';
 		var data = canvas.toDataURL('image/jpeg', 1.0);
-
+		let div = document.getElementById("cont");
+		div.style.display = 'flex';
 		canvas.toBlob((blob) => {
 			let file = new File([blob], "fileName.jpg", { type: "image/jpeg" })
+			let result = document.getElementById('pred-res');
 			var formData = new FormData(); 
 			formData.append("classified_id", 2);
 			formData.append("file", file); 					
-			$("#previewImg").attr("src",file);
+			$("#pred").attr("src",file);
 			axios({
 				method: 'post',
 				url: 'https://bananaapi.herokuapp.com/predict', 
@@ -142,10 +147,10 @@ function take_snapshot() {
 				'Accept': 'application/json',
 				'Content-Type': 'multipart/form-data' },
 			}).then(function(response) {
-				$("#result").text(response.data);
+				$("#pred-res").text(response.data);
 				console.log(response);
 			}) .catch(function(response) {
-				$("#result").text(response.data);
+				$("#pred-res").text(response.data);
 				console.error(response);
 			});
 		}, 'image/jpeg');
