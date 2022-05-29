@@ -15,13 +15,6 @@ if (isMobile) {
 	});
 }
 
-Webcam.set({
-	width: window.innerWidth,
-	height: window.innerHeight,
-	image_format: 'jpeg',
-	jpeg_quality: 90
-});
-
 Webcam.attach( '#my_camera' );
 //Image Preview
 const imgInput = document.getElementById('fileInput')
@@ -63,7 +56,6 @@ function uploadFile() {
 
 // Capture Image
 function take_snapshot() {
- 
 	// take snapshot and get image data
 	Webcam.snap( function(data_uri) {
 		// display results in page
