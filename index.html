@@ -23,21 +23,37 @@
     <div id="scanner-container">
       <div class="contentarea">
         <!-- CAMERA -->
-        <div class="result-container">
-
+        <div id="result_panel" class="result-hide-container">
+          <div  class="result-image">
+            <img id="previewImage" src="" alt="image preview" width="420" height="500">
+            <canvas id="canvas"></canvas>
+          </div>
+          <div class="result-text">
+            <p>information will be render here soon</p>
+          </div>
+          <h1>PREDICTION: <span id="res-api"></span></h1>
+          <div id="hide-res" class="result-footer">
+            <i class="hide">
+              <img src="res/drawables/hide-up.png" alt="">
+            </i>
+          </div>
         </div>
         <div class="camera">
           <span>LOADING CAMERA</span>
           <video id="video">Video stream not available.</video>
-          <canvas id="canvas"></canvas>
         </div>
         <!-- CONTROLS-->
         <div class="footer-controls">
-          <input type="file" name="" id="fileInput" class="file-input" onchange="uploadFile()">
-          <label for="fileInput" class="file-label">
-            <img id="uploadImage" src="res/drawables/gallery.png" alt="" srcset="">
-          </label>
-         
+          <div class="holder-cam-controls">
+            <input type="file" name="" id="fileInput" class="file-input" onchange="uploadFile()">
+            <label for="fileInput" class="file-label">
+              <img id="uploadImage" src="res/drawables/gallery.png" alt="" srcset="">
+            </label>
+            <i id="clears">
+              <img id="reset" src="res/drawables/reset.png" alt="" srcset="">
+              
+            </i>  
+          </div>
         </div>
       </div>
     </div>

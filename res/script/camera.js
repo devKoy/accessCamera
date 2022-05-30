@@ -1,11 +1,22 @@
+var hide_result = document.getElementById("hide-res");
+var result_panel = document.getElementById("result_panel");
 
-
+hide_result.addEventListener('click', function(ev){
+    result_panel.classList.remove("result-container");
+    result_panel.classList.add("result-hide-container");
+    ev.preventDefault();
+})
 //Get Prediction from Model
 function uploadFile() {
-	
+    result_panel.classList.remove("result-hide-container");
+    result_panel.classList.add("result-container");
+    $("#previewImage").css("display", "flex");
+    $("#canvas").css("display", "none");
+    var img = document.getElementById("previewImage");
 	var formData = new FormData(); 
 	var fileInput = document.getElementById('fileInput'); 
 	console.log(fileInput.files[0]);
+    img.src = URL.createObjectURL(fileInput.files[0]);
 	if (fileInput.files[0]){
 		formData.append("classified_id", 2);
 		formData.append("file", fileInput.files[0]); 					
@@ -17,25 +28,15 @@ function uploadFile() {
 			  'Accept': 'application/json',
 			  'Content-Type': 'multipart/form-data' },
 		}).then(function(response) {
-			$("#result").text(response.data);
+			$("#res-api").text(response.data);
 			console.log(response);
 		}) .catch(function(response) {
-			$("#result").text(response.data);
+			$("#res-api").text(response.data);
 			console.error(response);
 		});
 	} 
 }
 
-// Capture Image
-function take_snapshot() {
- 
-	// take snapshot and get image data
-	Webcam.snap( function(data_uri) {
-		// display results in page
-		document.getElementById('results').innerHTML = 
-		 '<img src="'+data_uri+'"/>';
-	 } );
- }
 
 //  - --------------------CAMERA---------------------
 
@@ -43,8 +44,8 @@ function take_snapshot() {
 	// width to the value defined here, but the height will be
 	// calculated based on the aspect ratio of the input stream.
   
-	var width = window.innerWidth;    // We will scale the photo width to this
-	var height = window.innerHeight;     // This will be computed based on the input stream
+	var width = 420;    // We will scale the photo width to this
+	var height = 500;     // This will be computed based on the input stream
   
 	// |streaming| indicates whether or not we're currently streaming
 	// video from the camera. Obviously, we start at false.
@@ -55,7 +56,7 @@ function take_snapshot() {
 	// will be set by the startup() function.
   
 	var video = document.getElementById('video');
-	var canvas = null;
+	var canvas =  document.getElementById('canvas');;
 	var photo = null;
 	var startbutton = null;
   
@@ -77,10 +78,8 @@ function take_snapshot() {
 	function startup() {
     
 	  if (showViewLiveResultButton()) { return; }
-	 
-	  canvas = document.getElementById('canvas');
 	  photo = document.getElementById('photo');
-	  clearButton = document.getElementById('clear');
+	  clearButton = document.getElementById('clears');
 	  startbutton = document.getElementById('scanner');
   
 	  navigator.mediaDevices.getUserMedia({video: {
@@ -103,7 +102,7 @@ function take_snapshot() {
 	  }, false);
 	  clearButton.addEventListener('click', function(ev){
 		let div = document.getElementById("cont");
-		div.style.display = 'flex';
+	    //	div.style.display = 'flex';
 		clearphoto();
 		ev.preventDefault();
 	  }, false);
@@ -133,21 +132,23 @@ function take_snapshot() {
 	// other changes before drawing it.
   
 	function takepicture() {
+      result_panel.classList.remove("result-hide-container");
+      result_panel.classList.add("result-container");
+      $("#previewImage").css("display", "none");
+      $("#canvas").css("display", "flex");
 	  var context = canvas.getContext('2d');
 	  if (width && height) {
 		canvas.width = width;
 		canvas.height = height;
-		context.drawImage(video, 0, 0, width, height);
+		context.drawImage(video, 0, 0);
 		canvas.style.display = 'inline-block';
-		var data = canvas.toDataURL('image/jpeg', 1.0);
-		let div = document.getElementById("cont");
+       
+        
 		canvas.toBlob((blob) => {
 			let file = new File([blob], "fileName.jpg", { type: "image/jpeg" })
-			let result = document.getElementById('pred-res');
 			var formData = new FormData(); 
 			formData.append("classified_id", 2);
-			formData.append("file", file); 					
-			$("#pred").attr("src",file);
+			formData.append("file", file); 		
 			axios({
 				method: 'post',
 				url: 'https://bananaapi.herokuapp.com/predict', 
@@ -156,10 +157,10 @@ function take_snapshot() {
 				'Accept': 'application/json',
 				'Content-Type': 'multipart/form-data' },
 			}).then(function(response) {
-				$("#pred-res").text(response.data);
+				$("#res-api").text(response.data);
 				console.log(response);
 			}) .catch(function(response) {
-				$("#pred-res").text(response.data);
+				$("#res-api").text(response.data);
 				console.error(response);
 			});
 		}, 'image/jpeg');
