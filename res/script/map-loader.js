@@ -14,10 +14,6 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap'
 }).addTo(map);
 
-setTimeout(function(){
-   map.invalidateSize(); 
-}, 100);
-
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -34,6 +30,8 @@ function getLocationANDCloseResult() {
         console.log("Geolocation is not supported by this browser.");
       }
 }
+
+
 
 function showPosition(position) {
    
@@ -52,7 +50,12 @@ function showPosition(position) {
         let today = new Date().toLocaleDateString()
         marker.bindPopup("<b>PLANT:</b> BANANA <br><b>DISEASE:</b> "+resMark+"<br> <b>DATE:</b> "+today).openPopup();
     }
+
     map.invalidateSize()
     
 }
 
+$("#mapper").on("click touchstart", function(){
+    getLocation()
+    map.invalidateSize()
+});
