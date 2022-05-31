@@ -1,0 +1,22 @@
+div#maps {
+    font-family: helvetica;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    background-color: #000000;
+    opacity: 0.8;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 25vh;
+}
+
+div#maps span {
+    position: relative;
+    color: white;
+    font-size: 39px;
+    font-weight: 900;
+}
