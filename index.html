@@ -26,7 +26,7 @@
     <div id="scanner-container">
       <div class="contentarea">
         <!-- CAMERA -->
-        <div id="result_panel" class="result-container">
+        <div id="result_panel" class="result-hide-container">
           <div  class="result-image">
             <img id="previewImage" src="" alt="image preview" width="420" height="500">
             <canvas id="canvas"></canvas>
@@ -73,7 +73,7 @@
         <div class="sc-bottom-bar">
           <!-- NAV ITEMS -->
           <a onclick="killCam()" class="sc-menu-item home sc-current" >
-            <i class="nav-item material-icons">home</i>
+            <i class="nav-item fa fa-home"></i>
             <span class="nav-title hidden">Home</span>
           </a>
           <a onclick="killCam()" class="sc-menu-item">
@@ -82,7 +82,7 @@
           </a>
           <a id="nav-scan" onclick="startup()" class="sc-menu-item nav-scan">
             <i class="">
-              <img id="scanner" width="23px" height="25px" src="res/drawables/icon-camera.png" alt="" srcset="">
+              <img id="scanner" width="23px" height="25px" src="res/drawables/icon-scan.png" alt="" srcset="">
             </i>
             <span class="nav-title">Scan</span>
           </a>
@@ -90,13 +90,18 @@
           <a class="sc-nav-indicator"></a>
           
           <a onclick="killCam()" class="sc-menu-item">
-            <i class="nav-item material-icons">library_books</i>
+            <i class="nav-item fa fa-book"></i>
             <span class="nav-title">Almanac</span>
+          </a>
+          <a onclick="killCam()" class="sc-menu-item">
+            <i class="nav-item 	far fa-map"></i>
+            <span class="nav-title">Map</span>
           </a>
           <a onclick="killCam()" class="sc-menu-item">
             <i class="nav-item 	far fa-user-circle"></i>
             <span class="nav-title">Me</span>
           </a>
+
           <!-- END NAV ITEMS-->
         </div>
       </div>
