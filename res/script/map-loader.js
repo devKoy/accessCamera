@@ -49,7 +49,8 @@ function showPosition(position) {
         var marker = L.marker([position.coords.latitude ,
             position.coords.longitude
         ]).addTo(map);
-        marker.bindPopup("<b>PLANT:</b> BANANA <br><b>DISEASE:</b> "+resMark).openPopup();
+        let today = new Date().toLocaleDateString()
+        marker.bindPopup("<b>PLANT:</b> BANANA <br><b>DISEASE:</b> "+resMark+"<br> <b>DATE:</b> "+today).openPopup();
     }
     map.invalidateSize()
     
