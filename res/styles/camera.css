@@ -118,7 +118,7 @@ div.result-container {
     font-family: helvetica;
     position: absolute;
     left: 0;
-    top: 0;
+    bottom: 0;
 	height: 100vh;
     width: 100%;
     background-color: white;
@@ -135,7 +135,7 @@ div.result-hide-container {
 	font-family: helvetica;
     position: absolute;
     left: 0;
-    top: 0;
+    bottom: 0;
 	height: 100vh;
     width: 100%;
     background-color: white;
@@ -170,19 +170,20 @@ div.result-footer {
 	width: 100%;
 	height: 10%;
 	position: absolute;
-	bottom: 96px;
+	top: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 div.result-footer img {
-	width: 110px;
+	width: 70px;
 	height: 40px;
+	transform:rotateX(-180deg)
 }
 @keyframes animate-result {
     from {
-        transform: translateY(-100%);
+        transform: translateY(100%);
     }to {
        transform: translateY(0%);
     }
@@ -191,6 +192,6 @@ div.result-footer img {
     from {
         transform: translateY(0%);
     }to {
-       transform: translateY(-100%);
+       transform: translateY(100%);
     }
 }

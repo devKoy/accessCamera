@@ -12,6 +12,7 @@ div#home {
     justify-content: center;
     align-items: center;
     padding-bottom: 25vh;
+    flex-direction: column;
 }
 
 div#home span {

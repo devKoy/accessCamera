@@ -2,7 +2,6 @@ var hide_result = document.getElementById("hide-res");
 var result_panel = document.getElementById("result_panel");
 
 hide_result.addEventListener('click', function(ev){
-    $("#res-api").text("")
     result_panel.classList.remove("result-container");
     result_panel.classList.add("result-hide-container");
     ev.preventDefault();

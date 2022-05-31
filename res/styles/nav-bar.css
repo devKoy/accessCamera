@@ -17,18 +17,15 @@ body, html{
 div.nav {
    position: absolute;
    bottom: 0;
-   display:flex;
-   justify-content: center;
-   align-items:center;
    margin: auto;
-   width: 100vw;
+   width: 100%;
 }
 
  .sc-bottom-bar{
    position:fixed;
    display:flex;
    padding: 8px 4px;
-   justify-content:space-evenly;
+   justify-content: space-around;
    width: 100%;
    bottom:0;
    
