@@ -37,7 +37,7 @@ div#community span {
 	bottom: 96px;
 	left: 0;
 	width: 100vw;
-	height: 8vh;
+	height: 200px;
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 15px 15px 0 0 ;
     z-index: 1;
@@ -52,6 +52,7 @@ div.holder-cam-controls {
     display: flex;
 	align-items: center;
 }
+
 .file-input {
 	display: none;
 }
@@ -85,33 +86,6 @@ div.holder-cam-controls {
 	transform: scale(1.1);
 }
 
-div.container-res {
-	width: 100vh;
-	display: none;
-	justify-content: center;
-	align-items: center;
-	background-color: rgba(0, 0, 0, 0.4);
-	position: absolute;
-	left: 0;
-	height: 100%;
-	right: 0;
-	padding: 0;
-	z-index: 22;
-}
-
-div.card-res {
-	position: absolute;
-	left: 50%;
-	right: 50%;
-	width: 25vw;
-	padding: 1rem;
-	height: 50vh;
-	background-color: white;
-	border-radius: 15px;
-	display: flex;
-	margin: 0;
-}
-
 
 div.result-container {
     font-family: helvetica;
@@ -121,9 +95,10 @@ div.result-container {
     width: 100%;
     background-color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: auto;
     z-index: 2;
+    align-items: center;
+
     animation: animate-result 1s; 
     animation-fill-mode: forwards;
     flex-direction: column;
@@ -137,7 +112,6 @@ div.result-hide-container {
     width: 100%;
     background-color: white;
     display: flex;
-    justify-content: center;
     align-items: center;
     z-index: 2;
     animation: animate-hide-result 1s; 
@@ -159,14 +133,18 @@ i.file-label {
 
 img#previewImage, canvas#canvas {
 	display: none;
+	width: 80%;
+	height: max-content;
 }
 
 div.result-image {
+    margin-top: 100px;
 	width: 100%;
 	height: 40%;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
 }
 
 div.result-footer {

@@ -10,8 +10,9 @@ body, html{
    background-color:#F5F5F5;
    margin: 0 !important;
    padding: 0 !important;
+   --webkit-tap-highlight-color: transparent;
    font-family: Helvetica;
-   -webkit-tap-highlight-color: transparent !important;
+   overflow: hidden;
 }
 
 div.nav {
@@ -28,7 +29,7 @@ div.nav {
    justify-content: space-around;
    width: 100%;
    bottom:0;
-   height: 5.5vh;
+   height: 110px;
    font-size:30px;
    background-image:radial-gradient(circle at 80px 27px,transparent 80px, #ffffff 27px);
    filter: drop-shadow(0px -1px 6px  rgba(0, 0, 0, 0.08)) drop-shadow(0px -2px 12px  rgba(0, 0, 0, 0.12));
@@ -39,7 +40,7 @@ div.nav {
    position:absolute; 
    width: 140px;
    height: 140px;
-   bottom: 35px;
+   bottom: 30px;
    margin:auto;
    left:0;
    background-color: limegreen;
@@ -49,7 +50,7 @@ div.nav {
  }
 
  .cam-indicator {
-   box-shadow: purple 0px 0px 0px 12px; 
+  animation: pulse 2s ease-out infinite;
  }
 
  .sc-menu-item{
@@ -66,7 +67,7 @@ div.nav {
    position:relative;
    color:#ffffff;
    z-index:3;
-   transform:translate3d(0px,-40px,0px);
+   transform:translate3d(0px,-35px,0px);
  }
  
  img#scanner, i.nav-item {
@@ -93,3 +94,22 @@ span.nav-title {
 span.hidden {
    display: none;
 }
+
+.cam-indicator::after {
+  content: '';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  border-radius: 50%;
+  position: absolute;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0px rgba(0,210,255,1),0 0 0 0px rgba(0,210,255,0.85);  }
+  50% { transform: scale(1.2); }
+  100% { box-shadow: 0 0 0 15px rgba(0,210,255,0),0 0 0 30px rgba(0,210,255,0); }
+}
+
+img.fungus { filter: hue-rotate(120deg); }

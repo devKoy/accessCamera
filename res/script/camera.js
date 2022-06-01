@@ -1,11 +1,6 @@
 var hide_result = document.getElementById("hide-res");
 var result_panel = document.getElementById("result_panel");
 
-hide_result.addEventListener('click', function(ev){
-    result_panel.classList.remove("result-container");
-    result_panel.classList.add("result-hide-container");
-    ev.preventDefault();
-})
 //Get Prediction from Model
 function uploadFile() {
     result_panel.classList.remove("result-hide-container");

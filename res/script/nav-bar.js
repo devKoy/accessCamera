@@ -12,14 +12,14 @@ var almanac = document.getElementById('almanac');
 var profile  = document.getElementById('profile');
 var map = document.getElementById('maps');
 
-menu_position = menu_current_item.offsetLeft - 55;
+menu_position = menu_current_item.offsetLeft - 58;
 menu_indicator.style.left = menu_position + "px";
 menu_bar.style.backgroundPosition = menu_position-10 + 'px';
 menu_item.forEach(
   function(select_menu_item){
     select_menu_item.addEventListener('click', function(e){
       e.preventDefault();
-      menu_position = this.offsetLeft - 55;
+      menu_position = this.offsetLeft - 58;
       menu_indicator.style.left = menu_position + "px";
       menu_bar.style.backgroundPosition = menu_position-10 + 'px';
       [...select_menu_item.parentElement.children].forEach(

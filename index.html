@@ -67,7 +67,50 @@
       <span>PLANTS AND DISEASES</span>
     </div>
     <div id="maps">
-      
+      <div class="reports-map">
+        <i id="dashboard_map" class="material-icons" onclick="toggleDash()">dashboard</i>
+      </div>
+      <div id="dashboard-report" class="dashboard-report-hide" onclick="toggleDash()">
+        <div class="dashboard-report-header" onclick="toggleDash()">
+          <div class="line" onclick="toggleDash()"></div>
+        </div>
+      </div>
+      <div class="map-holder">
+        <div id="map_categories">
+          <div class="header">
+            <span class="title">Legend: </span>
+          </div>
+          <div class="body">
+            <span style="background-color: #57AC44 ;">Healthy Plants</span>
+            <span style="background-color: #FFAD01 ;">bacterial</span>
+            <span style="background-color: #D171B8 ;">Fungus</span>
+            <span style="background-color: #D94E59;">Viral</span>
+          </div>
+        </div>
+      </div>
+      <!--- MAP REPORT
+      <div class="side-map-report">
+        <div class="arrow-head">
+          <i class="material-icons">keyboard_arrow_left</i>
+        </div>
+        <div class="body-container">
+          <div class="report">
+            <div class="header-report">
+              <span>REPORT</span>
+            </div>
+            <div class="body-report">
+              <span>Healthy: </span>
+              <span>Bacterial: </span>
+              <span>Fungal: </span>
+              <span>Viral: </span>
+            </div>
+            <div class="top-location">
+              <span>Top Contributor: </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      -->
     </div>
     <div id="profile">
       <span>PROFILE AND SETTINGS</span>
@@ -93,7 +136,7 @@
             <span class="nav-title">Scan</span>
           </a>
 
-          <a class="sc-nav-indicator"></a>
+          <a class="sc-nav-indicator" ></a>
           
           <a onclick="killCam()" class="sc-menu-item">
             <i class="nav-item fa fa-book"></i>

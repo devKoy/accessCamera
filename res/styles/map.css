@@ -14,9 +14,157 @@ div#maps {
     padding-bottom: 25vh;
 }
 
-div#maps span {
+div.map-holder {
+    position: fixed;
+    bottom: 200px;
+    left: 0;
+    width: wrap-content;
+    height: wrap-content;
+    display: flex;
+    z-index: 1000 !important;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 0 15px 15px 0 ;
+    padding: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+div.map-holder span.title {
     position: relative;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+div.map-holder div.body{
+    display: grid;
+    grid-template-columns: auto auto;
+    padding-top:25px;
+    padding-left: 25px;
+    gap: 8px;
+}
+
+div.map-holder div.body span{
+    font-size: 15px;
+    font-weight: 600;
     color: white;
-    font-size: 39px;
-    font-weight: 900;
+    padding: 5px 8px;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+
+div.reports-map {
+    position: fixed;
+    right: 50px;
+    top: 50px;
+    width: 70px;
+    height: 70px;
+    z-index: 1000;
+    background-color: #fff;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+div.reports-map i {
+    font-size: 40px;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+div.dashboard-report {
+    position: fixed;
+    height: 70vh;
+    width: 90%;
+    border-radius: 50px 50px 20px 20px;
+    z-index: 10000;
+    background-color: black;
+    bottom: 0;
+    padding: 50px;
+    animation: animate-report 1s; 
+    animation-fill-mode: forwards;
+}
+
+div.dashboard-report-hide {
+    position: fixed;
+    height: 70vh;
+    width: 90%;
+    border-radius: 50px 50px 20px 20px;
+    z-index: 10000;
+    background-color: black;
+    bottom: 0;
+    padding: 50px;
+    animation: animate-hide-report 1s; 
+    animation-fill-mode: forwards;
+}
+
+div.dashboard-report-header {
+    position:relative;
+    top:0;
+    height: 5%;
+    display: flex;
+    justify-content:center;
+    width: 100%;
+}
+
+div.dashboard-report-header div.line {
+    background-color: white;
+    width: 50%;
+    height: 10px;
+}
+
+
+
+@keyframes animate-report {
+    from {
+		height: 0vh;
+        transform: translateY(100%);
+    }to {
+		height: 70vh;
+        transform: translateY(0%);
+    }
+}
+@keyframes animate-hide-report {
+    from {
+		height: 70vh;
+        transform: translateY(0%);
+    }to {
+		height: 0vh;
+        transform: translateY(100%);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+div.side-map-report {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: -100vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+div.side-map-report div.arrow-head {
+    position: relative;
+    left: 0;
+    width: 80px;
+    height: 150px;
+    border-radius: 100px;
+}
+
+div.side-map-report div.arrow-head i{
+    font-size: 100px;
 }
