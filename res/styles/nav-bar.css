@@ -10,8 +10,8 @@ body, html{
    background-color:#F5F5F5;
    margin: 0 !important;
    padding: 0 !important;
-   --webkit-tap-highlight-color: transparent;
    font-family: Helvetica;
+   -webkit-tap-highlight-color: transparent !important;
 }
 
 div.nav {
