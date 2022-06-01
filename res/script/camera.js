@@ -78,6 +78,8 @@ function uploadFile() {
 	  startbutton = document.getElementById('scanner');
   
 	  navigator.mediaDevices.getUserMedia({video: {
+                  width: 720,
+                  height: 1280,
 		  facingMode: "environment"
 	  }, audio: false})
 	  .then(function(stream) {
