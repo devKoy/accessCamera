@@ -29,7 +29,7 @@ div#community span {
 	padding: 0;
 	margin: 0;
 	height: 100%;
-	object-fit: fit;
+	object-fit: cover;
 }
 
 .footer-controls {
