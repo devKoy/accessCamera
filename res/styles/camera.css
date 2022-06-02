@@ -37,25 +37,25 @@ div#community span {
 }
 
 #video {
-	position: fixed;
-	top: 150px;
-	left: 0;
-	width:100%;
-	padding: 0;
-	margin: 0;
-	height: 75%;
-	object-fit: fill;
-	border-radius: 25px;
+    position: fixed;
+    top: 150px;
+    left: 0;
+    width:100%;
+    padding: 0;
+    margin: 0;
+    height: 75%;
+    object-fit: fill;
+    border-radius: 25px;
 }
 
 .footer-controls {
-	position: fixed;
-	bottom: 96px;
-	left: 0;
-	width: 100vw;
-	height: 280px;
-	background-color: rgba(0, 0, 0, 0.5);
-	border-radius: 15px 15px 0 0 ;
+    position: fixed;
+    bottom: 96px;
+    left: 0;
+    width: 100vw;
+    height: 280px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 15px 15px 0 0 ;
     z-index: -1;
     display: flex;
     align-items: center;
@@ -67,46 +67,45 @@ div.holder-cam-controls {
     width: 90%;
     justify-content: space-between;
     display: flex;
-	align-items: center;
+    align-items: center;
 }
 
 .file-input {
-	display: none;
+    display: none;
 }
 
 #uploadImage , #clear, span.shutter_inner {
-	width: 65px;
-	height: 65px;
-	font-size: larger;
-	font-weight: 800;
-	background-color: transparent;
-	border: none;
+    width: 65px;
+    height: 65px;
+    font-size: larger;
+    font-weight: 800;
+    background-color: transparent;
+    border: none;
     position: relative;
     z-index: 2;
 }
 
 
 #startbutton {
-	padding: 17px;
-	background-color: white;
-	border-radius: 60px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #0d9c9b;
-	font-weight: bold;
-	border: none;
-	font-size: larger;
+    padding: 17px;
+    background-color: white;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0d9c9b;
+    font-weight: bold;
+    border: none;
+    font-size: larger;
 }
 
 #startbutton:hover {
-	box-shadow: 0 0 5px lime;
-	transform: scale(1.1);
+    box-shadow: 0 0 5px lime;
+    transform: scale(1.1);
 }
 
 
 div.result-container {
-    font-family: helvetica;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -123,7 +122,6 @@ div.result-container {
 }
 
 div.result-hide-container {
-	font-family: helvetica;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -141,28 +139,29 @@ div.result-hide-container {
 img#uploadImage, img#reset {
     width: 65px;
     height: 65px;
-	opacity: .7;
+    opacity: .7;
     filter: invert(97%) sepia(3%) saturate(0%) hue-rotate(274deg) brightness(104%) contrast(104%);
 }
 
 i.file-label {
-	padding: 8px;
-	background-color: white;
+    padding: 8px;
+    background-color: white;
 }
 
 img#previewImage, canvas#canvas {
-	display: none;
-	width: 80%;
-	height: max-content;
+    display: none;
+    width: 80%;
+    height: 50%;
+    height: max-content;
     object-fit: fill;
 }
 
 div.result-image {
     margin-top: 130px;
-	width: 100%;
-	display: flex;
-	left: 0;
-	right: 0;
+    width: 100%;
+    display: flex;
+    left: 0;
+    right: 0;
     justify-content: space-evenly;
     object-fit: fill;
 }
@@ -303,9 +302,6 @@ div.result-image-scan{
       clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
     }
 }
-
-
-
 
 .wrap {
     position: absolute;
