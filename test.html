@@ -12,3 +12,27 @@
       <span>Top Contributor: </span>
     </div>
   </div>
+
+
+
+
+  <!--SCANN-->
+
+  div{
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(#03A9F4,#03A9F4), 
+   linear-gradient(90deg, #ffffff33 1px,transparent 0,transparent 19px),
+   linear-gradient(#ffffff33 1px,transparent 0,transparent 19px),
+   linear-gradient(transparent, #2196f387);
+    background-size:100% 1.5%, 10% 100%,100% 10%, 100% 100%;
+    background-repeat: no-repeat,repeat,repeat,no-repeat;
+    background-position: 0 0,0 0, 0 0, 0 0;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 1.5%, 0% 1.5%);
+    animation: move 2s infinite linear;
+  }
+  @keyframes move{
+    to{
+      background-position: 0 100%,0 0, 0 0, 0 0;
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }

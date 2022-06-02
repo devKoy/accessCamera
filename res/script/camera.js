@@ -3,6 +3,7 @@ var result_panel = document.getElementById("result_panel");
 
 //Get Prediction from Model
 function uploadFile() {
+	$("#result_panel").css("opacity", "1");
     result_panel.classList.remove("result-hide-container");
     result_panel.classList.add("result-container");
     $("#previewImage").css("display", "flex");
@@ -39,8 +40,8 @@ function uploadFile() {
 	// width to the value defined here, but the height will be
 	// calculated based on the aspect ratio of the input stream.
   
-	var width = 720;    // We will scale the photo width to this
-	var height = 1280;     // This will be computed based on the input stream
+	var width = 420;    // We will scale the photo width to this
+	var height = 500;     // This will be computed based on the input stream
   
 	// |streaming| indicates whether or not we're currently streaming
 	// video from the camera. Obviously, we start at false.
@@ -75,16 +76,36 @@ function uploadFile() {
 	  if (showViewLiveResultButton()) { return; }
 	  photo = document.getElementById('photo');
 	  clearButton = document.getElementById('clears');
-	  startbutton = document.getElementById('scanner');
+	  startbutton = document.getElementById('shutter_inner');
   
 	  navigator.mediaDevices.getUserMedia({video: {
-                  width: 720,
-                  height: 1280,
 		  facingMode: "environment"
 	  }, audio: false})
 	  .then(function(stream) {
-		video.srcObject = stream;
-		video.play();
+			video.srcObject = stream;
+			video.play();
+
+			//FLASHLIGHT HAHAHAH
+			const track = stream.getVideoTracks()[0];
+			//Create image capture object and get camera capabilities
+			const imageCapture = new ImageCapture(track)
+			const photoCapabilities = imageCapture.getPhotoCapabilities().then(() => {
+
+				//todo: check if camera has a torch
+
+				//let there be light!
+				const btn = document.querySelector('.switch');
+				btn.addEventListener('click', function(){
+					try{
+						track.applyConstraints({
+							advanced: [{torch: true}]
+						});
+					}catch(err){
+						console.log("FLASHLIGHT NOT SUPPORTED")
+					}
+				
+				});
+			});
 	  })
 	  .catch(function(err) {
 		console.log("An error occurred: " + err);
@@ -129,6 +150,7 @@ function uploadFile() {
 	// other changes before drawing it.
   
 	function takepicture() {
+	  $("#result_panel").css("opacity", "1");
       result_panel.classList.remove("result-hide-container");
       result_panel.classList.add("result-container");
       $("#previewImage").css("display", "none");

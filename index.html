@@ -10,7 +10,6 @@
     crossorigin=""/>
 		<link rel="stylesheet" href="res/styles/nav-bar.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="res/styles/home.css">
     <link rel="stylesheet" href="res/styles/community.css">
     <link rel="stylesheet" href="res/styles/camera.css">
     <link rel="stylesheet" href="res/styles/profile.css">
@@ -19,10 +18,6 @@
   </head>
   <body>
     <!--PAGES-->
-    <div id="home">
-      <span>HOME</span>
-     
-    </div>
     <div id="community">
       <span>COMMUNITY</span>
     </div>
@@ -46,6 +41,8 @@
         </div>
         <div class="camera">
           <span>LOADING CAMERA</span>
+          <button class="switch">On / Off</button>
+          <img id="camera-effects" src="res/drawables/camera-shutter.png" alt="">
           <video id="video">Video stream not available.</video>
         </div>
         <!-- CONTROLS-->
@@ -55,10 +52,13 @@
             <label for="fileInput" class="file-label">
               <img id="uploadImage" src="res/drawables/gallery.png" alt="" srcset="">
             </label>
+            <div id="shutter">
+              <span id="shutter_inner" class="shutter_inner"></span>
+            </div>
             <i id="clears">
-              <img id="reset" src="res/drawables/reset.png" alt="" srcset="">
-              
-            </i>  
+              <img id="reset" src="res/drawables/reset.png" alt="" srcset="">   
+            </i>
+
           </div>
         </div>
       </div>
@@ -121,13 +121,15 @@
       <div class="nav">
         <div class="sc-bottom-bar">
           <!-- NAV ITEMS -->
-          <a onclick="killCam()" class="sc-menu-item home sc-current" >
-            <i class="nav-item fa fa-home"></i>
-            <span class="nav-title hidden">Home</span>
-          </a>
-          <a onclick="killCam()" class="sc-menu-item">
+             
+       
+          <a onclick="killCam()" class="sc-menu-item sc-current">
             <i class="nav-item 	fas fa-globe-asia"></i>
-            <span class="nav-title">Community</span>
+            <span class="nav-title hidden">Community</span>
+          </a>
+          <a onclick="killCam()" class="sc-menu-item" >
+            <i class="nav-item fa fa-book"></i>
+            <span class="nav-title">Learn</span>
           </a>
           <a id="nav-scan" onclick="startup()" class="sc-menu-item nav-scan">
             <i class="">
@@ -136,18 +138,14 @@
             <span class="nav-title">Scan</span>
           </a>
 
-          <a class="sc-nav-indicator" ></a>
-          
-          <a onclick="killCam()" class="sc-menu-item">
-            <i class="nav-item fa fa-book"></i>
-            <span class="nav-title">Almanac</span>
-          </a>
+          <a class="sc-nav-indicator"></a>
+       
           <a id="mapper" onclick="killCam(); getLocation()" class="sc-menu-item">
-            <i class="nav-item 	far fa-map"></i>
+            <i class="nav-item 	fas fa-map-marked-alt"></i>
             <span class="nav-title">Map</span>
           </a>
           <a onclick="killCam()" class="sc-menu-item">
-            <i class="nav-item 	far fa-user-circle"></i>
+            <i class="nav-item 	fas fa-user-circle"></i>
             <span class="nav-title">Me</span>
           </a>
 

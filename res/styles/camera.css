@@ -13,6 +13,11 @@ div#scanner-container {
     align-items: center;
 }
 
+div.camera {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 div#community span {
     position: relative;
@@ -22,14 +27,15 @@ div#community span {
 }
 
 #video {
-	position: absolute;
-	top: 0;
+	position: fixed;
+	top: 100px;
 	left: 0;
+	width:100%;
 	padding: 0;
 	margin: 0;
-	width: 100%;
-        height: 100%;
-        object-fit: fill;
+	height: 75%;
+	object-fit: fill;
+	border-radius: 25px;
 }
 
 .footer-controls {
@@ -37,34 +43,36 @@ div#community span {
 	bottom: 96px;
 	left: 0;
 	width: 100vw;
-	height: 200px;
+	height: 280px;
 	background-color: rgba(0, 0, 0, 0.5);
 	border-radius: 15px 15px 0 0 ;
-        z-index: 1;
-        display: flex;
-        justify-content: center;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 div.holder-cam-controls {
-       position: relative;
-       width: 90%;
-       justify-content: space-between;
-       display: flex;
-       align-items: center;
+    position: relative;
+    width: 90%;
+    justify-content: space-between;
+    display: flex;
+	align-items: center;
 }
 
 .file-input {
 	display: none;
 }
 
-#uploadImage , #clear{
-	width: 45px;
-	height: 45px;
+#uploadImage , #clear, span.shutter_inner {
+	width: 65px;
+	height: 65px;
 	font-size: larger;
 	font-weight: 800;
 	background-color: transparent;
-	color: red;
 	border: none;
+    position: relative;
+    z-index: 2;
 }
 
 
@@ -120,9 +128,9 @@ div.result-hide-container {
 }
 
 img#uploadImage, img#reset {
-    width: 50px;
-    height: 50px;
-	
+    width: 65px;
+    height: 65px;
+	opacity: .7;
     filter: invert(97%) sepia(3%) saturate(0%) hue-rotate(274deg) brightness(104%) contrast(104%);
 }
 
@@ -162,6 +170,20 @@ div.result-footer img {
 	height: 40px;
 	transform:rotateX(-180deg)
 }
+
+
+span.shutter_inner {
+    padding: 50px 60px 50px 60px;
+    background-color: limegreen;
+    border-radius: 50%;
+	width: 140px;
+	height: 140px;
+}
+
+span.shutter_inner:hover {
+    background-color: lime;
+}
+
 @keyframes animate-result {
     from {
 		height: 0vh;
@@ -180,3 +202,50 @@ div.result-footer img {
         transform: translateY(100%);
     }
 }
+
+.shutter_inner {
+    animation: pulse 2s ease-out infinite;
+}
+
+.shutter_inner::after {
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    border-radius: 50%;
+    position: absolute;
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0px rgb(0, 255, 17),0 0 0 0px rgba(0, 255, 60, 0.85);  }
+    50% { transform: scale(1.2); }
+    100% { box-shadow: 0 0 0 15px rgba(0,210,255,0),0 0 0 30px rgba(0,210,255,0); }
+  }
+  
+
+  #camera-effects {
+      position: absolute;
+      z-index: 1;
+      width: 85%;
+      transform: translateY(-110px);
+      animation: cam .6s;
+      animation-fill-mode: forwards;
+      animation-delay: 1.4s;
+  }
+
+  @keyframes cam {
+      0% { width: 85%; height: 35%;}
+      20% { width: 85%; height: 40%;}
+      40% { width: 85%; height: 45%;}
+      60% { width: 85%; height: 50%;}
+      80% { width: 85%; height: 55%;}
+        100% { width: 85%; height: 60%;}
+  }
+
+  button.switch {
+      position: absolute;
+      top: 1rem;
+      z-index: 1;
+  }

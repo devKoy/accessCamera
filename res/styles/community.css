@@ -8,7 +8,7 @@ div#community {
     z-index: 0;
     background-color: #000000;
     opacity: 0.8;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 25vh;
