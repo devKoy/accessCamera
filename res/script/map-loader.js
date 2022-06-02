@@ -116,3 +116,12 @@ function toggleDash(){
   }
   $("#dashboard_map").toggleClass("toggled");
 }
+
+
+
+$(".bg-dark").click(function(){
+   $("#hide-res").trigger("click");
+   setTimeout(function() {
+      $(".bg-dark").css("display", "none");
+    }, 500);
+});
