@@ -123,5 +123,5 @@ $(".bg-dark").click(function(){
    $("#hide-res").trigger("click");
    setTimeout(function() {
       $(".bg-dark").css("display", "none");
-    }, 500);
+    }, 1000);
 });
