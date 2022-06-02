@@ -97,7 +97,7 @@ function uploadFile() {
 				const btn = document.querySelector('.switch');
 				btn.addEventListener('click', function(){
 					try{
-						if(btn.classList.contains('on')){
+						if(!btn.classList.contains('on')){
 							track.applyConstraints({
 								advanced: [{torch: true}]
 							});
