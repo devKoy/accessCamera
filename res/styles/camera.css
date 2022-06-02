@@ -150,7 +150,6 @@ i.file-label {
 
 img#previewImage, canvas#canvas {
     display: none;
-    width: 80%;
     height: 350px;
     object-fit: fill;
 }
