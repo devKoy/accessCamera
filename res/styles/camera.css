@@ -281,8 +281,8 @@ div.loading-results {
 div.result-image-scan{
     display: block;
     position: fixed;
-    width: 100%;
-    height: 600px;
+    width: 70%;
+    height: 500px;
     z-index: 2;
     background: linear-gradient(#03A9F4,#03A9F4), 
    linear-gradient(90deg, #ffffff33 1px,transparent 0,transparent 19px),
