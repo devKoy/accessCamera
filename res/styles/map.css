@@ -54,10 +54,10 @@ div.map-holder div.body span{
 
 div.reports-map {
     position: fixed;
-    right: 50px;
-    top: 50px;
-    width: 70px;
-    height: 70px;
+    right: 80px;
+    top: 150px;
+    width: 90px;
+    height: 90px;
     z-index: 1000;
     background-color: #fff;
     opacity: 0.8;
