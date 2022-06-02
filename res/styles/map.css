@@ -55,7 +55,7 @@ div.map-holder div.body span{
 div.reports-map {
     position: fixed;
     right: 80px;
-    top: 150px;
+    bottom: 250px;
     width: 90px;
     height: 90px;
     z-index: 1000;
