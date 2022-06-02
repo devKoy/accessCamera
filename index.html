@@ -24,24 +24,42 @@
     <div id="scanner-container">
       <div class="contentarea">
         <!-- CAMERA -->
-        <div id="result_panel" class="result-hide-container">
-          <div  class="result-image">
-            <img id="previewImage" src="" alt="image preview" width="420" height="500">
-            <canvas id="canvas"></canvas>
-          </div>
-          <div class="result-text">
-            <p>information will be render here soon</p>
-          </div>
-          <h1>PREDICTION: <span id="res-api"></span></h1>
-          <div id="hide-res" onclick="getLocationANDCloseResult()" class="result-footer">
-            <i class="hide">
-              <img onclick="getLocationANDCloseResult()" src="res/drawables/hide-up.png" alt="">
-            </i>
+        <div class="bg-dark">
+          <div id="result_panel" class="result-hide-container">
+            <div id="hide-res" onclick="getLocationANDCloseResult()" class="result-footer">
+              <i class="hide">
+                <img onclick="getLocationANDCloseResult()" src="res/drawables/hide-up.png" alt="">
+              </i>
+            </div>
+            <div  class="result-image">
+              <div class="result-image-scan"></div>
+              <img id="previewImage" src="" alt="image preview" width="100%" height="400px">
+              <canvas id="canvas"></canvas>
+            </div>
+            <div class="loading-results">
+              <div class="loading-results-icon">
+               
+              </div>
+              <div class="loading-results-text">
+                <div class="wrap">
+                  <div class="loading">
+                    <div class="bounceball"></div>
+                    <div class="text" style="font-size: 30px; font-weight: 900;">Loading Results</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="result-text">
+              <p>information will be render here soon</p>
+            </div>
+            <h1>PREDICTION: <span id="res-api"></span></h1>
           </div>
         </div>
+       
         <div class="camera">
           <span>LOADING CAMERA</span>
-          <button class="switch">On / Off</button>
+          <a id="switch" class="switch 	material-icons">flash_off</a>
+
           <img id="camera-effects" src="res/drawables/camera-shutter.png" alt="">
           <video id="video">Video stream not available.</video>
         </div>

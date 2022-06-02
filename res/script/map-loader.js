@@ -38,7 +38,10 @@ var locDefault = false
 //GET RESULT AND LOCATION AND REMOVE RESULT PANEL AND DATA
 function getLocationANDCloseResult() {
     var result_panel = document.getElementById("result_panel");
-
+    setTimeout(function() {
+      $(".bg-dark").css("display", "none");
+    }, 500);
+   
     result_panel.classList.remove("result-container");
     result_panel.classList.add("result-hide-container");
     $("#previewImage").css("display", "none");

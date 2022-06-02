@@ -1,8 +1,11 @@
 var hide_result = document.getElementById("hide-res");
 var result_panel = document.getElementById("result_panel");
-
+var delayInMilliseconds = 4000; //4 second
 //Get Prediction from Model
 function uploadFile() {
+	$(".bg-dark").css("display", "flex");
+	$(".loading-results").css("display", "flex");
+	$(".result-image-scan").css("display", "flex");
 	$("#result_panel").css("opacity", "1");
     result_panel.classList.remove("result-hide-container");
     result_panel.classList.add("result-container");
@@ -26,6 +29,10 @@ function uploadFile() {
 		}).then(function(response) {
 			$("#res-api").text(response.data);
 			console.log(response);
+			setTimeout(function() {
+				$(".result-image-scan").css("display", "none");
+				$(".loading-results").css("display", "none");
+			}, delayInMilliseconds);
 		}) .catch(function(response) {
 			$("#res-api").text(response.data);
 			console.error(response);
@@ -40,7 +47,7 @@ function uploadFile() {
 	// width to the value defined here, but the height will be
 	// calculated based on the aspect ratio of the input stream.
   
-	var width = 420;    // We will scale the photo width to this
+	var width = 700;    // We will scale the photo width to this
 	var height = 500;     // This will be computed based on the input stream
   
 	// |streaming| indicates whether or not we're currently streaming
@@ -101,11 +108,13 @@ function uploadFile() {
 							track.applyConstraints({
 								advanced: [{torch: true}]
 							});
+							$("#switch").text("flash_on")
 							btn.classList.add('on');
 						}else{
 							track.applyConstraints({
 								advanced: [{torch: false}]
 							});
+							$("#switch").text("flash_off")
 							btn.classList.remove('on');
 						}
 					
@@ -158,47 +167,49 @@ function uploadFile() {
 	// other changes before drawing it.
   
 	function takepicture() {
-	  $("#result_panel").css("opacity", "1");
-      result_panel.classList.remove("result-hide-container");
-      result_panel.classList.add("result-container");
-      $("#previewImage").css("display", "none");
-      $("#canvas").css("display", "flex");
-	  var context = canvas.getContext('2d');
-	  if (width && height) {
-		canvas.width = width;
-		canvas.height = height;
-		context.drawImage(video, 0, 0);
-		canvas.style.display = 'inline-block';
-       
-        
-		canvas.toBlob((blob) => {
-			let file = new File([blob], "fileName.jpg", { type: "image/jpeg" })
-			var formData = new FormData(); 
-			formData.append("classified_id", 2);
-			formData.append("file", file); 		
-			axios({
-				method: 'post',
-				url: 'https://bananaapi.herokuapp.com/predict', 
-				data: formData,
-				headers: { 
-				'Accept': 'application/json',
-				'Content-Type': 'multipart/form-data' },
-			}).then(function(response) {
-				$("#res-api").text(response.data);
-				console.log(response);
-			}) .catch(function(response) {
-				$("#res-api").text(response.data);
-				console.error(response);
-			});
-		}, 'image/jpeg');
-		
-	  } else {
-		clearphoto();
-	  }
+	    $(".loading-results").css("display", "flex");
+		$(".result-image-scan").css("display", "flex");
+		$(".bg-dark").css("display", "flex");
+		$("#result_panel").css("opacity", "1");
+		result_panel.classList.remove("result-hide-container");
+		result_panel.classList.add("result-container");
+		$("#previewImage").css("display", "none");
+		$("#canvas").css("display", "flex");
+		var context = canvas.getContext('2d');
+		if (width && height) {
+			canvas.width = width;
+			canvas.height = height;
+			context.drawImage(video, 0, 0);
+			canvas.style.display = 'inline-block';
+			canvas.toBlob((blob) => {
+				let file = new File([blob], "fileName.jpg", { type: "image/jpeg" })
+				var formData = new FormData(); 
+				formData.append("classified_id", 2);
+				formData.append("file", file); 		
+				axios({
+					method: 'post',
+					url: 'https://bananaapi.herokuapp.com/predict', 
+					data: formData,
+					headers: { 
+					'Accept': 'application/json',
+					'Content-Type': 'multipart/form-data' },
+				}).then(function(response) {
+					$("#res-api").text(response.data);
+					console.log(response);
+					setTimeout(function() {
+						$(".result-image-scan").css("display", "none");
+						$(".loading-results").css("display", "none");
+					}, delayInMilliseconds);
+				}) .catch(function(response) {
+					$("#res-api").text(response.data);
+					console.error(response);
+				});
+			}, 'image/jpeg');
+			
+		} else {
+			clearphoto();
+	  	}
 	}
 	
 	// Set up our event listener to run the startup process
 	// once loading is complete.
-	
-
-  
