@@ -28,7 +28,7 @@ div#community span {
 
 #video {
 	position: fixed;
-	top: 100px;
+	top: 150px;
 	left: 0;
 	width:100%;
 	padding: 0;
@@ -246,6 +246,6 @@ span.shutter_inner:hover {
 
   button.switch {
       position: absolute;
-      top: 1rem;
+      top: 150px;
       z-index: 1;
   }

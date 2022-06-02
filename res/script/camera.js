@@ -97,13 +97,21 @@ function uploadFile() {
 				const btn = document.querySelector('.switch');
 				btn.addEventListener('click', function(){
 					try{
-						track.applyConstraints({
-							advanced: [{torch: true}]
-						});
+						if(btn.classList.contains('on')){
+							track.applyConstraints({
+								advanced: [{torch: true}]
+							});
+							btn.classList.add('on');
+						}else{
+							track.applyConstraints({
+								advanced: [{torch: false}]
+							});
+							btn.classList.remove('on');
+						}
+					
 					}catch(err){
 						console.log("FLASHLIGHT NOT SUPPORTED")
 					}
-				
 				});
 			});
 	  })
