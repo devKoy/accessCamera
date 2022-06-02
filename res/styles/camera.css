@@ -151,18 +151,17 @@ i.file-label {
 img#previewImage, canvas#canvas {
     display: none;
     width: 80%;
-    height: 50%;
-    height: max-content;
+    height: 350px;
     object-fit: fill;
 }
 
 div.result-image {
-    margin-top: 130px;
+    margin-top: 120px;
     width: 100%;
     display: flex;
     left: 0;
     right: 0;
-    justify-content: space-evenly;
+    justify-content: center;
     object-fit: fill;
 }
 
