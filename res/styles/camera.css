@@ -44,8 +44,8 @@ div#community span {
     padding: 0;
     margin: 0;
     height: 75%;
-    object-fit: fill;
-    border-radius: 25px;
+    object-fit: fit;
+    border-radius: 35px;
 }
 
 .footer-controls {
