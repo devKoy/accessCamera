@@ -89,6 +89,7 @@ function uploadFile() {
 		  facingMode: "environment",
                   height: { ideal: 768 },
                   width: { ideal: 1074 },
+                  focusMode: "continous"
 	  }, audio: false})
 	  .then(function(stream) {
 			video.srcObject = stream;
