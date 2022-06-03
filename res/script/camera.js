@@ -87,8 +87,8 @@ function uploadFile() {
   
 	  navigator.mediaDevices.getUserMedia({video: {
 		  facingMode: "environment",
-                  width: window.innerWidth,
-                  height: window.innerHeight
+                  height: { ideal: 1280 },
+                  width: { ideal: 720 },
 	  }, audio: false})
 	  .then(function(stream) {
 			video.srcObject = stream;
