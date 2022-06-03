@@ -87,8 +87,8 @@ function uploadFile() {
   
 	  navigator.mediaDevices.getUserMedia({video: {
 		  facingMode: "environment",
-                  height: { ideal: 1280 },
-                  width: { ideal: 720 },
+                  height: { ideal: 768 },
+                  width: { ideal: 1074 },
 	  }, audio: false})
 	  .then(function(stream) {
 			video.srcObject = stream;
@@ -108,7 +108,6 @@ function uploadFile() {
                                           saturation : true,
                                           sharpness : true,
                                           focusDistance : true,
-                                          pointsOfInterest : true,
                                           exposureCompensation : true
                                         }]
                          });
@@ -125,7 +124,7 @@ function uploadFile() {
                                                                             exposureMode : true,
                                                                             focusMode : true,
                                                                             contrast : true,
-brightness : true,saturation : true, sharpness : true, focusDistance : true, pointsOfInterest : true, exposureCompensation : true 
+brightness : true,saturation : true, sharpness : true, focusDistance : true, exposureCompensation : true 
 
                                                                           }]
 							});
@@ -138,7 +137,7 @@ brightness : true,saturation : true, sharpness : true, focusDistance : true, poi
                                                                             exposureMode : true,
                                                                             focusMode : true,
                                                                             contrast : true,
-brightness : true,saturation : true, sharpness : true, focusDistance : true, pointsOfInterest : true, exposureCompensation : true 
+brightness : true,saturation : true, sharpness : true, focusDistance : true, exposureCompensation : true 
 
                                                                           }]
 							});
