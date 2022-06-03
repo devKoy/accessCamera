@@ -99,15 +99,15 @@ function uploadFile() {
 			const photoCapabilities = imageCapture.getPhotoCapabilities().then(() => {
 			track.applyConstraints({
 			      advanced: [{
-                                          exposureMode = true,
-                                          focusMode = true,
-                                          contrast = true,
-                                          brightness = true,
-                                          saturation = true,
-                                          sharpness = true,
-                                          focusDistance = true,
-                                          pointsOfInterest = true,
-                                          exposureCompensation = true
+                                          exposureMode : true,
+                                          focusMode : true,
+                                          contrast : true,
+                                          brightness : true,
+                                          saturation : true,
+                                          sharpness : true,
+                                          focusDistance : true,
+                                          pointsOfInterest : true,
+                                          exposureCompensation : true
                                         }]
                          });
 				//todo: check if camera has a torch
@@ -120,10 +120,10 @@ function uploadFile() {
 							track.applyConstraints({
 								advanced: [{
                                                                             torch: true,
-                                                                            exposureMode = true,
-                                                                            focusMode = true,
-                                                                            contrast = true,
-brightness = true,saturation = true, sharpness = true, focusDistance = true, pointsOfInterest = true, exposureCompensation = true 
+                                                                            exposureMode : true,
+                                                                            focusMode : true,
+                                                                            contrast : true,
+brightness : true,saturation : true, sharpness : true, focusDistance : true, pointsOfInterest : true, exposureCompensation : true 
 
                                                                           }]
 							});
@@ -133,10 +133,10 @@ brightness = true,saturation = true, sharpness = true, focusDistance = true, poi
 							track.applyConstraints({
 								advanced: [{
                                                                             torch: false,
-                                                                            exposureMode = true,
-                                                                            focusMode = true,
-                                                                            contrast = true,
-brightness = true,saturation = true, sharpness = true, focusDistance = true, pointsOfInterest = true, exposureCompensation = true 
+                                                                            exposureMode : true,
+                                                                            focusMode : true,
+                                                                            contrast : true,
+brightness : true,saturation : true, sharpness : true, focusDistance : true, pointsOfInterest : true, exposureCompensation : true 
 
                                                                           }]
 							});
