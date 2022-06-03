@@ -97,7 +97,19 @@ function uploadFile() {
 			//Create image capture object and get camera capabilities
 			const imageCapture = new ImageCapture(track)
 			const photoCapabilities = imageCapture.getPhotoCapabilities().then(() => {
-
+			track.applyConstraints({
+			      advanced: [{
+                                          exposureMode = true,
+                                          focusMode = true,
+                                          contrast = true,
+                                          brightness = true,
+                                          saturation = true,
+                                          sharpness = true,
+                                          focusDistance = true,
+                                          pointsOfInterest = true,
+                                          exposureCompensation = true
+                                        }]
+                         });
 				//todo: check if camera has a torch
 
 				//let there be light!
@@ -106,13 +118,27 @@ function uploadFile() {
 					try{
 						if(!btn.classList.contains('on')){
 							track.applyConstraints({
-								advanced: [{torch: true}]
+								advanced: [{
+                                                                            torch: true,
+                                                                            exposureMode = true,
+                                                                            focusMode = true,
+                                                                            contrast = true,
+brightness = true,saturation = true, sharpness = true, focusDistance = true, pointsOfInterest = true, exposureCompensation = true 
+
+                                                                          }]
 							});
 							$("#switch").text("flash_on")
 							btn.classList.add('on');
 						}else{
 							track.applyConstraints({
-								advanced: [{torch: false}]
+								advanced: [{
+                                                                            torch: false,
+                                                                            exposureMode = true,
+                                                                            focusMode = true,
+                                                                            contrast = true,
+brightness = true,saturation = true, sharpness = true, focusDistance = true, pointsOfInterest = true, exposureCompensation = true 
+
+                                                                          }]
 							});
 							$("#switch").text("flash_off")
 							btn.classList.remove('on');
