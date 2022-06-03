@@ -79,18 +79,13 @@ function uploadFile() {
 	}
   
 	function startup() {
-    
+    const constraints =  { facingMode: 'environment',"video": { width: { exact: 400 }}, advanced : [{focusMode: "continuous"}]};
 	  if (showViewLiveResultButton()) { return; }
 	  photo = document.getElementById('photo');
 	  clearButton = document.getElementById('clears');
 	  startbutton = document.getElementById('shutter_inner');
   
-	  navigator.mediaDevices.getUserMedia({video: {
-		  facingMode: "environment",
-                  height: { ideal: 768 },
-                  width: { ideal: 1074 },
-                  focusMode: "continous"
-	  }, audio: false})
+	  navigator.mediaDevices.getUserMedia({video: constraints , audio: false})
 	  .then(function(stream) {
 			video.srcObject = stream;
 			video.play();
@@ -100,19 +95,7 @@ function uploadFile() {
 			//Create image capture object and get camera capabilities
 			const imageCapture = new ImageCapture(track)
 			const photoCapabilities = imageCapture.getPhotoCapabilities().then(() => {
-			track.applyConstraints({
-			      advanced: [{
-                                          exposureMode : true,
-                                          focusMode : true,
-                                          contrast : true,
-                                          brightness : true,
-                                          saturation : true,
-                                          sharpness : true,
-                                          focusDistance : true,
-                                          exposureCompensation : true
-                                        }]
-                         });
-				//todo: check if camera has a torch
+							//todo: check if camera has a torch
 
 				//let there be light!
 				const btn = document.querySelector('.switch');
@@ -120,27 +103,13 @@ function uploadFile() {
 					try{
 						if(!btn.classList.contains('on')){
 							track.applyConstraints({
-								advanced: [{
-                                                                            torch: true,
-                                                                            exposureMode : true,
-                                                                            focusMode : true,
-                                                                            contrast : true,
-brightness : true,saturation : true, sharpness : true, focusDistance : true, exposureCompensation : true 
-
-                                                                          }]
+								advanced: [{ torch: true}]
 							});
 							$("#switch").text("flash_on")
 							btn.classList.add('on');
 						}else{
 							track.applyConstraints({
-								advanced: [{
-                                                                            torch: false,
-                                                                            exposureMode : true,
-                                                                            focusMode : true,
-                                                                            contrast : true,
-brightness : true,saturation : true, sharpness : true, focusDistance : true, exposureCompensation : true 
-
-                                                                          }]
+								advanced: [{ torch: false}]
 							});
 							$("#switch").text("flash_off")
 							btn.classList.remove('on');
