@@ -86,7 +86,9 @@ function uploadFile() {
 	  startbutton = document.getElementById('shutter_inner');
   
 	  navigator.mediaDevices.getUserMedia({video: {
-		  facingMode: "environment"
+		  facingMode: "environment",
+                  width: window.innerWidth,
+                  height: window.innerHeight
 	  }, audio: false})
 	  .then(function(stream) {
 			video.srcObject = stream;
