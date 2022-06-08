@@ -1,6 +1,6 @@
 var hide_result = document.getElementById("hide-res");
 var result_panel = document.getElementById("result_panel");
-var delayInMilliseconds = 4000; //4 second
+var delayInMilliseconds = 2000; //2 second
 //Get Prediction from Model
 function uploadFile() {
 	$(".bg-dark").css("display", "flex");
@@ -200,7 +200,7 @@ function uploadFile() {
 	// once loading is complete.
 	
 	function bananaAPI(image, classification){
-		if(classification == "banana"){
+		if(classification == "Banana"){
 			axios({
 				method: 'post',
 				url: 'https://bananaapi.herokuapp.com/predict', 
