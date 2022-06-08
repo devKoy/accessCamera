@@ -21,7 +21,7 @@ function uploadFile() {
 		formData.append("file", fileInput.files[0]); 					
 		axios({
 			method: 'post',
-			url: 'https://bananaapi.herokuapp.com/predict', 
+			url: 'https://plantclassifiermodel.herokuapp.com/predict', 
 			data: formData,
 			headers: { 
 			  'Accept': 'application/json',
@@ -185,7 +185,7 @@ function uploadFile() {
 				formData.append("file", file); 		
 				axios({
 					method: 'post',
-					url: 'https://bananaapi.herokuapp.com/predict', 
+					url: 'https://plantclassifiermodel.herokuapp.com/predict', 
 					data: formData,
 					headers: { 
 					'Accept': 'application/json',
