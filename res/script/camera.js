@@ -27,14 +27,8 @@ function uploadFile() {
 			  'Accept': 'application/json',
 			  'Content-Type': 'multipart/form-data' },
 		}).then(function(response) {
-			$("#res-api").text(response.data);
-			console.log(response);
-			setTimeout(function() {
-				$(".result-image-scan").css("display", "none");
-				$(".loading-results").css("display", "none");
-			}, delayInMilliseconds);
+			bananaAPI(image = formData, classification = response.data)
 		}) .catch(function(response) {
-			$("#res-api").text(response.data);
 			console.error(response);
 		});
 	} 
