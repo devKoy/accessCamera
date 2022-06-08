@@ -211,10 +211,6 @@ function uploadFile() {
 			}).then(function(response) {
 				$("#res-api").text(response.data);
 				console.log(response);
-				setTimeout(function() {
-					$(".result-image-scan").css("display", "none");
-					$(".loading-results").css("display", "none");
-				}, delayInMilliseconds);
 			}) .catch(function(response) {
 				$("#res-api").text(response.data);
 				console.error(response);
@@ -234,5 +230,9 @@ function uploadFile() {
 		}else{
 		
 		}
+                setTimeout(function() {
+	               $(".result-image-scan").css("display", "none");
+		       $(".loading-results").css("display", "none");
+	        }, delayInMilliseconds);
 	}
 		
