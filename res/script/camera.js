@@ -27,7 +27,7 @@ function uploadFile() {
 			  'Accept': 'application/json',
 			  'Content-Type': 'multipart/form-data' },
 		}).then(function(response) {
-			bananaAPI(image = formData, classification = response.data)
+			DiseaseClassifierAPI(image = formData, classification = response.data)
 		}) .catch(function(response) {
 			console.error(response);
 		});
@@ -185,7 +185,7 @@ function uploadFile() {
 					'Accept': 'application/json',
 					'Content-Type': 'multipart/form-data' },
 				}).then(function(response) {
-					bananaAPI(image = formData, classification = response.data)
+					DiseaseClassifierAPI(image = formData, classification = response.data)
 				}) .catch(function(response) {
 					console.error(response);
 				});
@@ -199,7 +199,7 @@ function uploadFile() {
 	// Set up our event listener to run the startup process
 	// once loading is complete.
 	
-	function bananaAPI(image, classification){
+	function DiseaseClassifierAPI(image, classification){
 		if(classification == "Banana"){
 			axios({
 				method: 'post',
@@ -219,6 +219,20 @@ function uploadFile() {
 				$("#res-api").text(response.data);
 				console.error(response);
 			});
+		}else if(classification == "Corn"){
+			$("#res-api").text("Corn Disease Classifier will be available soon 💯...");
+		}else if(classification == "Pepper"){
+			$("#res-api").text("Pepper Disease Classifier will be available soon 💯...");
+		}else if(classification == "Rice"){
+			$("#res-api").text("Rice Disease Classifier will be available soon 💯...");
+		}else if(classification == "Squash"){
+			$("#res-api").text("Squash Disease Classifier will be available soon 💯...");
+		}else if(classification == "Tomato"){
+			$("#res-api").text("Tomato Disease Classifier will be available soon 💯...");
+		}else if(classification == "no leaf detected"){
+			$("#res-api").text("No leaf found on the image. Please Fit the crop within the Frame...");
+		}else{
+		
 		}
 	}
 		
