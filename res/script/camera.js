@@ -217,22 +217,43 @@ function uploadFile() {
 			});
 		}else if(classification == "Corn"){
 			$("#res-api").text("Corn Disease Classifier will be available soon 💯...");
+		        setTimeout(function() {
+	                    $(".result-image-scan").css("display", "none");
+		            $(".loading-results").css("display", "none");
+	                }, delayInMilliseconds);
 		}else if(classification == "Pepper"){
 			$("#res-api").text("Pepper Disease Classifier will be available soon 💯...");
+		        setTimeout(function() {
+	                    $(".result-image-scan").css("display", "none");
+		            $(".loading-results").css("display", "none");
+	                }, delayInMilliseconds);
 		}else if(classification == "Rice"){
 			$("#res-api").text("Rice Disease Classifier will be available soon 💯...");
+		        setTimeout(function() {
+	                    $(".result-image-scan").css("display", "none");
+		            $(".loading-results").css("display", "none");
+	                }, delayInMilliseconds);
 		}else if(classification == "Squash"){
 			$("#res-api").text("Squash Disease Classifier will be available soon 💯...");
+		        setTimeout(function() {
+	                    $(".result-image-scan").css("display", "none");
+		            $(".loading-results").css("display", "none");
+	                }, delayInMilliseconds);
 		}else if(classification == "Tomato"){
 			$("#res-api").text("Tomato Disease Classifier will be available soon 💯...");
-		}else if(classification == "no leaf detected"){
+		        setTimeout(function() {
+	                    $(".result-image-scan").css("display", "none");
+		            $(".loading-results").css("display", "none");
+	                }, delayInMilliseconds);
+                }else if(classification == "no leaf detected"){
 			$("#res-api").text("No leaf found on the image. Please Fit the crop within the Frame...");
+                        setTimeout(function() {
+	                    $(".result-image-scan").css("display", "none");
+		            $(".loading-results").css("display", "none");
+	                }, delayInMilliseconds);
 		}else{
 		
 		}
-                setTimeout(function() {
-	               $(".result-image-scan").css("display", "none");
-		       $(".loading-results").css("display", "none");
-	        }, delayInMilliseconds);
+        
 	}
 		
