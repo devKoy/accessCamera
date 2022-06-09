@@ -1,6 +1,6 @@
 var hide_result = document.getElementById("hide-res");
 var result_panel = document.getElementById("result_panel");
-var delayInMilliseconds = 2000; //2 second
+var delayInMilliseconds = 500;
 //Get Prediction from Model
 function uploadFile() {
 	$(".bg-dark").css("display", "flex");
