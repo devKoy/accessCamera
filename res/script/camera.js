@@ -1,6 +1,6 @@
 var hide_result = document.getElementById("hide-res");
 var result_panel = document.getElementById("result_panel");
-var delayInMilliseconds = 500;
+var delayInMilliseconds = 200;
 //Get Prediction from Model
 function uploadFile() {
 	$(".bg-dark").css("display", "flex");
@@ -29,7 +29,10 @@ function uploadFile() {
 		}).then(function(response) {
 			DiseaseClassifierAPI(image = formData, classification = response.data)
 		}) .catch(function(response) {
-			console.error(response);
+			console.log("Re executing request")
+			setTimeout(function() {
+				uploadFile();
+			}, delayInMilliseconds);
 		});
 	} 
 }
@@ -187,7 +190,10 @@ function uploadFile() {
 				}).then(function(response) {
 					DiseaseClassifierAPI(image = formData, classification = response.data)
 				}) .catch(function(response) {
-					console.error(response);
+					console.log("Re executing request")
+					  setTimeout(function() {
+					    takePicture();
+					}, delayInMilliseconds);
 				});
 			}, 'image/jpeg');
 			
