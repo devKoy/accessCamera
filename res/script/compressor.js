@@ -1,7 +1,7 @@
-const MAX_WIDTH = 320;
-const MAX_HEIGHT = 180;
+const MAX_WIDTH = 260;
+const MAX_HEIGHT = 260;
 const MIME_TYPE = "image/jpeg";
-const QUALITY = 0.7;
+const QUALITY = 0.8;
 
 const input = document.getElementById("fileInput");
 input.onchange = function (ev) {
