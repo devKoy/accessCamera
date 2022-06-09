@@ -60,7 +60,10 @@ function changeActivity(current) {
         almanac.style.display = "none";
         map.style.display = "none";
         profile.style.display = "none";
-        $("#result_panel").css("opacity", "0");
+        if($(".bg-dark").css('display') == 'none'){
+          $("#result_panel").css("opacity", "0");
+        }
+       
     }else if(current == "community" || current == "Community"){
         scanner.style.display = "none";
         community.style.display = "flex";

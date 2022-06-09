@@ -2,7 +2,7 @@ var hide_result = document.getElementById("hide-res");
 var result_panel = document.getElementById("result_panel");
 var delayInMilliseconds = 200;
 //Get Prediction from Model
-function uploadFile() {
+function uploadFile(file) {
 	$(".bg-dark").css("display", "flex");
 	$(".loading-results").css("display", "flex");
 	$(".result-image-scan").css("display", "flex");
@@ -14,11 +14,11 @@ function uploadFile() {
     var img = document.getElementById("previewImage");
 	var formData = new FormData(); 
 	var fileInput = document.getElementById('fileInput'); 
-	console.log(fileInput.files[0]);
     img.src = URL.createObjectURL(fileInput.files[0]);
 	if (fileInput.files[0]){
 		formData.append("classified_id", 2);
-		formData.append("file", fileInput.files[0]); 					
+		formData.append("file", file); 
+		console.log(file)				
 		axios({
 			method: 'post',
 			url: 'https://plantclassifiermodel.herokuapp.com/predict', 
@@ -27,6 +27,7 @@ function uploadFile() {
 			  'Accept': 'application/json',
 			  'Content-Type': 'multipart/form-data' },
 		}).then(function(response) {
+			console.log(response.data)
 			DiseaseClassifierAPI(image = formData, classification = response.data)
 		}) .catch(function(response) {
 			console.log("Re executing request")
@@ -188,14 +189,16 @@ function uploadFile() {
 					'Accept': 'application/json',
 					'Content-Type': 'multipart/form-data' },
 				}).then(function(response) {
+					console.log(response.data);
 					DiseaseClassifierAPI(image = formData, classification = response.data)
+
 				}) .catch(function(response) {
 					console.log("Re executing request")
 					  setTimeout(function() {
 					    takePicture();
 					}, delayInMilliseconds);
 				});
-			}, 'image/jpeg');
+			}, 'image/jpeg', 0.7);
 			
 		} else {
 			clearphoto();
@@ -206,6 +209,7 @@ function uploadFile() {
 	// once loading is complete.
 	
 	function DiseaseClassifierAPI(image, classification){
+		if(classification != "no leaf detected"){$("#waiting-result-text").text(classification+" Detected... Analyzing the problem... ")}
 		if(classification == "Banana"){
 			axios({
 				method: 'post',
@@ -216,58 +220,151 @@ function uploadFile() {
 				'Content-Type': 'multipart/form-data' },
 			}).then(function(response) {
 				$("#res-api").text(response.data);
+				$("#res-plant").text(classification);
 				console.log(response);
 		        setTimeout(function() {
-	                    $(".result-image-scan").css("display", "none");
+	                $(".result-image-scan").css("display", "none");
 		            $(".loading-results").css("display", "none");
-	                }, delayInMilliseconds);
+	            }, delayInMilliseconds);
 			}) .catch(function(response) {
 				$("#res-api").text(response.data);
 				console.error(response);
-		                setTimeout(function() {
-	                             $(".result-image-scan").css("display", "none");
-		                     $(".loading-results").css("display", "none");
-	                       }, delayInMilliseconds);
+		            setTimeout(function() {
+	                    $(".result-image-scan").css("display", "none");
+		                $(".loading-results").css("display", "none");
+	                }, delayInMilliseconds);
 			});
 		}else if(classification == "Corn"){
-			$("#res-api").text("Corn Disease Classifier will be available soon 💯...");
+			axios({
+				method: 'post',
+				url: 'https://cornsapi.herokuapp.com/predict', 
+				data: image,
+				headers: { 
+				'Accept': 'application/json',
+				'Content-Type': 'multipart/form-data' },
+			}).then(function(response) {
+				$("#res-api").text(response.data);
+				$("#res-plant").text(classification);
+				console.log(response);
 		        setTimeout(function() {
-	                    $(".result-image-scan").css("display", "none");
+	                $(".result-image-scan").css("display", "none");
 		            $(".loading-results").css("display", "none");
+	            }, delayInMilliseconds);
+			}) .catch(function(response) {
+				$("#res-api").text(response.data);
+				console.error(response);
+		            setTimeout(function() {
+	                    $(".result-image-scan").css("display", "none");
+		                $(".loading-results").css("display", "none");
 	                }, delayInMilliseconds);
+			});
 		}else if(classification == "Pepper"){
-			$("#res-api").text("Pepper Disease Classifier will be available soon 💯...");
+			axios({
+				method: 'post',
+				url: 'https://squashpepperapi.herokuapp.com/predict', 
+				data: image,
+				headers: { 
+				'Accept': 'application/json',
+				'Content-Type': 'multipart/form-data' },
+			}).then(function(response) {
+				$("#res-api").text(response.data);
+				$("#res-plant").text(classification);
+				console.log(response);
 		        setTimeout(function() {
-	                    $(".result-image-scan").css("display", "none");
+	                $(".result-image-scan").css("display", "none");
 		            $(".loading-results").css("display", "none");
+	            }, delayInMilliseconds);
+			}) .catch(function(response) {
+				$("#res-api").text(response.data);
+				console.error(response);
+		            setTimeout(function() {
+	                    $(".result-image-scan").css("display", "none");
+		                $(".loading-results").css("display", "none");
 	                }, delayInMilliseconds);
+			});
 		}else if(classification == "Rice"){
-			$("#res-api").text("Rice Disease Classifier will be available soon 💯...");
+			axios({
+				method: 'post',
+				url: 'https://ricesapi.herokuapp.com/predict', 
+				data: image,
+				headers: { 
+				'Accept': 'application/json',
+				'Content-Type': 'multipart/form-data' },
+			}).then(function(response) {
+				$("#res-api").text(response.data);
+				$("#res-plant").text(classification);
+				console.log(response);
 		        setTimeout(function() {
-	                    $(".result-image-scan").css("display", "none");
+	                $(".result-image-scan").css("display", "none");
 		            $(".loading-results").css("display", "none");
+	            }, delayInMilliseconds);
+			}) .catch(function(response) {
+				$("#res-api").text(response.data);
+				$("#res-plant").text(classification);
+				console.error(response);
+		            setTimeout(function() {
+	                    $(".result-image-scan").css("display", "none");
+		                $(".loading-results").css("display", "none");
 	                }, delayInMilliseconds);
+			});
 		}else if(classification == "Squash"){
-			$("#res-api").text("Squash Disease Classifier will be available soon 💯...");
+			axios({
+				method: 'post',
+				url: 'https://squashpepperapi.herokuapp.com/predict', 
+				data: image,
+				headers: { 
+				'Accept': 'application/json',
+				'Content-Type': 'multipart/form-data' },
+			}).then(function(response) {
+				$("#res-api").text(response.data);
+				$("#res-plant").text(classification);
+				console.log(response);
 		        setTimeout(function() {
-	                    $(".result-image-scan").css("display", "none");
+	                $(".result-image-scan").css("display", "none");
 		            $(".loading-results").css("display", "none");
+	            }, delayInMilliseconds);
+			}) .catch(function(response) {
+				$("#res-api").text(response.data);
+				$("#res-plant").text(classification);
+				console.error(response);
+		            setTimeout(function() {
+	                    $(".result-image-scan").css("display", "none");
+		                $(".loading-results").css("display", "none");
 	                }, delayInMilliseconds);
+			});
 		}else if(classification == "Tomato"){
-			$("#res-api").text("Tomato Disease Classifier will be available soon 💯...");
+			axios({
+				method: 'post',
+				url: 'https://tomatoapi.herokuapp.com/predict', 
+				data: image,
+				headers: { 
+				'Accept': 'application/json',
+				'Content-Type': 'multipart/form-data' },
+			}).then(function(response) {
+				$("#res-api").text(response.data);
+				$("#res-plant").text(classification);
+				console.log(response);
 		        setTimeout(function() {
-	                    $(".result-image-scan").css("display", "none");
+	                $(".result-image-scan").css("display", "none");
 		            $(".loading-results").css("display", "none");
+	            }, delayInMilliseconds);
+			}) .catch(function(response) {
+				$("#res-api").text(response.data);
+				console.error(response);
+		            setTimeout(function() {
+	                    $(".result-image-scan").css("display", "none");
+		                $(".loading-results").css("display", "none");
 	                }, delayInMilliseconds);
-                }else if(classification == "no leaf detected"){
+			});
+        }else if(classification == "no leaf detected"){
+			$("#res-plant").text("classification not found");
 			$("#res-api").text("No leaf found on the image. Please Fit the crop within the Frame...");
-                        setTimeout(function() {
-	                    $(".result-image-scan").css("display", "none");
-		            $(".loading-results").css("display", "none");
-	                }, delayInMilliseconds);
+            setTimeout(function() {
+	            $(".result-image-scan").css("display", "none");
+		        $(".loading-results").css("display", "none");
+	        }, delayInMilliseconds);
 		}else{
 		
 		}
         
 	}
-		

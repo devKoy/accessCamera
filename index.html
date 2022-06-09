@@ -31,7 +31,7 @@
                 <img onclick="getLocationANDCloseResult()" src="res/drawables/hide-up.png" alt="">
               </i>
             </div>
-            <div  class="result-image">
+            <div id="res-holder"  class="result-image">
               <div class="result-image-scan"></div>
               <img id="previewImage" src="" alt="image preview">
               <canvas id="canvas" width= "500" height= "450"></canvas>
@@ -42,9 +42,10 @@
               </div>
               <div class="loading-results-text">
                 <div class="wrap">
-                  <div class="loading">
+                  <div class="loading" style="display: flex; justify-content: center; align-items: center; flex-direction:column;">
                     <div class="bounceball"></div>
-                    <div class="text" style="font-size: 30px; font-weight: 900;">Loading Results</div>
+                    <br>
+                    <div id="waiting-result-text" class="text" style="font-size: 25px; font-weight: 600; margin-top: 10px; text-align: center;">Analyzing Plant... Please wait a few momment</div>
                   </div>
                 </div>
               </div>
@@ -52,7 +53,8 @@
             <div class="result-text">
               <p>information will be render here soon</p>
             </div>
-            <h1 style= "margin: 15px; text-align: center;">PREDICTION: <span id="res-api"></span></h1>
+            <h2 style= "margin: 10px; text-align: left;">PLANT: <span id="res-plant"></span></h2>
+            <h2 style= "margin: 10px; text-align: left;">DISEASE: <span id="res-api"></span></h2>
           </div>
         </div>
        
@@ -66,7 +68,7 @@
         <!-- CONTROLS-->
         <div class="footer-controls">
           <div class="holder-cam-controls">
-            <input type="file" name="" id="fileInput" class="file-input" onchange="uploadFile()">
+            <input type="file" accept="image/*" id="fileInput" class="file-input">
             <label for="fileInput" class="file-label">
               <img id="uploadImage" src="res/drawables/gallery.png" alt="" srcset="">
             </label>
@@ -182,7 +184,10 @@
   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
   crossorigin=""></script>
   <script src="https://kit.fontawesome.com/b9dbd913b1.js" crossorigin="anonymous"></script>
+
   <script src="res/script/camera.js"></script>
+  <!--COMPRESS IMAGE BEFORE SENDING TO API-->
+  <script src="res/script/compressor.js"></script>
   <script src="res/script/nav-bar.js"></script>
   <script src="res/script/map-loader.js"></script>
 </html>

@@ -44,8 +44,8 @@ function getLocationANDCloseResult() {
    
     result_panel.classList.remove("result-container");
     result_panel.classList.add("result-hide-container");
-    //$("#previewImage").css("display", "none");
-   // $("#canvas").css("display", "none");
+    $("#previewImage").css("display", "none");
+    $("#canvas").css("display", "none");
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
     } else {
@@ -57,44 +57,86 @@ function getLocationANDCloseResult() {
 
 var resMark = ""
 function showPosition(position) {
-   
-    var res = document.getElementById("res-api").innerText;
 
-    if (res.includes("No leaf Detected")){return} else
-    if (res.includes("cordana")){resMark = "Cordana Leaf Spot"; addMarker("fungal", position)} else
-    if (res.includes("healthy")){resMark = "None"; addMarker("healthy", position)} else
-    if (res.includes("sigatoka")){resMark = "Sigatoka Leaf Spot"; addMarker("Bacterial", position)} else
-    if (res.includes("pestalotiopsis")){resMark = "Pestalotiopsis"; addMarker("fungal", position)}
+    var res_name = document.getElementById("res-plant").innerText;
+    var res = document.getElementById("res-api").innerText;
+    if (res.includes("No leaf Detected")){return}
+
+    if(res_name.toUpperCase() == "BANANA"){
+      if (res.includes("Cordana")){resMark = "Cordana"; addMarker("fungal", position, res_name)} else
+      if (res.includes("Healthy")){resMark = "None"; addMarker("healthy", position, res_name)} else
+      if (res.includes("Sigatoka")){resMark = "Sigatoka"; addMarker("Bacterial", position, res_name)} else
+      if (res.includes("Pestalotiopsis")){resMark = "Pestalotiopsis"; addMarker("fungal", position, res_name)}
+    }else if(res_name.toUpperCase() == "RICE"){
+      if (res.includes("Brown")){resMark = "Brown Spot"; addMarker("fungal", position, res_name)} else
+      if (res.includes("Hispa")){resMark = "Hispa"; addMarker("pest", position, res_name)} else
+      if (res.includes("Leaf Blast")){resMark = "Leaf Blast"; addMarker("fungal", position, res_name)} 
+    }else if(res_name.toUpperCase() == "CORN"){
+      if (res.includes("Gray")){resMark = "Gray Leaf Spot"; addMarker("fungal", position, res_name)} else
+      if (res.includes("Blight")){resMark = "Leaf Blight"; addMarker("fungal", position, res_name)} else
+      if (res.includes("Common")){resMark = "Common Rust"; addMarker("fungal", position, res_name)} else
+      if (res.includes("Healthy")){resMark = "None"; addMarker("healthy", position, res_name)}
+    }else if(res_name.toUpperCase() == "TOMATO"){
+      if (res.includes("Bacterial")){resMark = "Bacterial Spot"; addMarker("Bacterial", position, res_name)} else
+      if (res.includes("Early")){resMark = "Early Blight"; addMarker("fungal", position, res_name)} else
+      if (res.includes("Healthy")){resMark = "None"; addMarker("healthy", position, res_name)} else
+      if (res.includes("Late")){resMark = "Late Blight"; addMarker("fungal", position, res_name)} else
+      if (res.includes("Mold")){resMark = "Leaf Mold"; addMarker("fungal", position, res_name)} else
+      if (res.includes("Mosaic")){resMark = "Mosaic Virus"; addMarker("viral", position, res_name)} else
+      if (res.includes("Target")){resMark = "Target Spot"; addMarker("fungal", position, res_name)} else
+      if (res.includes("Curl")){resMark = "Yellow Leaf Curl Virus"; addMarker("viral", position, res_name)}
+    }
+   
     
-    if(locDefault){$("#res-api").text(""); locDefault = false}
-    
+    if(locDefault){
+      $("#res-api").text(""); 
+     locDefault = false
+     $("#waiting-result-text").text("Analyzing Plant... Please wait a few momment");
+    }
+   
     map.invalidateSize()
     
 }
 
-function addMarker(typerist, position){
+function addMarker(typerist, position, res_name){
 
   let today = new Date().toLocaleDateString()
-  var bananaIcon;
-
+  var circle
 
   if(typerist == "healthy"){
-    bananaIcon = L.icon({
-      iconUrl: 'res/drawables/markers/healthy.png', iconSize:[50, 70], iconAnchor:[22, 94], shadowAnchor: [4, 62], popupAnchor:[-3, -76]
-    });
+     circle = L.circle([position.coords.latitude ,
+      position.coords.longitude], {
+      color: '#4FA03A',
+      fillColor: '#57AC44',
+      fillOpacity: 0.5,
+      radius: 500
+    }).addTo(map);
   }else if(typerist == "fungal"){
-    bananaIcon = L.icon({
-      iconUrl: 'res/drawables/markers/fungus.png', iconSize:[50, 70], iconAnchor:[22, 94], shadowAnchor: [4, 62], popupAnchor:[-3, -76]
-    });
+    circle = L.circle([position.coords.latitude ,
+      position.coords.longitude], {
+      color: '#C761AB',
+      fillColor: '#D171B8',
+      fillOpacity: 0.5,
+      radius: 500
+    }).addTo(map);
   }else if(typerist == "Bacterial"){
-    bananaIcon = L.icon({
-      iconUrl: 'res/drawables/markers/bacterial.png', iconSize:[50, 70], iconAnchor:[22, 94], shadowAnchor: [4, 62], popupAnchor:[-3, -76]
-    });
+    circle = L.circle([position.coords.latitude ,
+      position.coords.longitude], {
+      color: '#F2A402',
+      fillColor: '#FFAD03',
+      fillOpacity: 0.5,
+      radius: 500
+    }).addTo(map);
+  }else if(typerist == "viral"){
+    circle = L.circle([position.coords.latitude ,
+      position.coords.longitude], {
+      color: '#C93C48',
+      fillColor: '#F2A402',
+      fillOpacity: 0.5,
+      radius: 500
+    }).addTo(map);
   }
-  var marker = L.marker([position.coords.latitude ,
-    position.coords.longitude
-  ], {icon: bananaIcon}).addTo(map);
-  marker.bindPopup("<b>PLANT:</b> BANANA <br><b>DISEASE:</b> "+resMark+"<br> <b>DATE:</b> "+today).openPopup();
+  circle.bindPopup("<b>PLANT:</b>"+res_name+"<br><b>DISEASE:</b> "+resMark+"<br> <b>DATE:</b> "+today).openPopup();
 }
 
 $("#mapper").on("click touchstart", function(){
@@ -116,12 +158,3 @@ function toggleDash(){
   }
   $("#dashboard_map").toggleClass("toggled");
 }
-
-
-
-$(".bg-dark").click(function(){
-   $("#hide-res").trigger("click");
-   setTimeout(function() {
-      $(".bg-dark").css("display", "none");
-    }, 1000);
-});
