@@ -44,7 +44,7 @@ function getLocationANDCloseResult() {
    
     result_panel.classList.remove("result-container");
     result_panel.classList.add("result-hide-container");
-    $("#previewImage").css("display", "none");
+    //$("#previewImage").css("display", "none");
     $("#canvas").css("display", "none");
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
